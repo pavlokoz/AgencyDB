@@ -19,7 +19,6 @@ namespace AgencyModels.Models
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<DisplayDate> DisplayDates { get; set; }
         public virtual DbSet<Material> Materials { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<ContactPerson> ContactPersons { get; set; }
