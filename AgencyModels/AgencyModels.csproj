@@ -49,23 +49,90 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\Advertisement.cs" />
-    <Compile Include="Models\AdvertisingCampaign.cs" />
-    <Compile Include="Models\Agency.cs" />
-    <Compile Include="Models\AgencyModel.cs" />
-    <Compile Include="Models\City.cs" />
-    <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\ContactPerson.cs" />
-    <Compile Include="Models\DisplayDate.cs" />
-    <Compile Include="Models\Material.cs" />
-    <Compile Include="Models\Payment.cs" />
-    <Compile Include="Models\Type.cs" />
+    <Compile Include="Models\Account.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Advertisement.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdvertisingCampaign.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Agency.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AgencyModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgencyModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AgencyModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AgencyModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgencyModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\City.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContactPerson.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DisplayDate.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Material.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payment.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Type.cs">
+      <DependentUpon>AgencyModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Models\AgencyModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AgencyModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\AgencyModels.edmx.diagram">
+      <DependentUpon>AgencyModels.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\AgencyModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AgencyModels.edmx</DependentUpon>
+      <LastGenOutput>AgencyModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AgencyModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AgencyModels.edmx</DependentUpon>
+      <LastGenOutput>AgencyModels.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

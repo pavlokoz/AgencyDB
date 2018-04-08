@@ -1,0 +1,932 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AdvAgenciesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="bigint" Nullable="false" />
+          <Property Name="CampaignId" Type="bigint" Nullable="false" />
+          <Property Name="Account" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="AdvertisementId" />
+          </Key>
+          <Property Name="Frequency" Type="int" Nullable="false" />
+          <Property Name="AdvertisementId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampaignId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AdvAgenciesDB.dbo.AdvertisementDisplayDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AdvertisementDisplayDate">
+          <Key>
+            <PropertyRef Name="AdvertisementId" />
+            <PropertyRef Name="DateId" />
+          </Key>
+          <Property Name="AdvertisementId" Type="bigint" Nullable="false" />
+          <Property Name="DateId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdvertisingCampaign">
+          <Key>
+            <PropertyRef Name="CampaignId" />
+          </Key>
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="CampaignName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Slogan" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Characteristic" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AgencyId" Type="bigint" Nullable="false" />
+          <Property Name="CampaignId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Agency">
+          <Key>
+            <PropertyRef Name="AgencyId" />
+          </Key>
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="AgencyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Street" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HouseNumber" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AdvAgenciesDB.dbo.ContactPerson' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ContactPerson">
+          <Key>
+            <PropertyRef Name="EMail" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="PersonId" />
+            <PropertyRef Name="AgencyId" />
+          </Key>
+          <Property Name="EMail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PersonId" Type="bigint" Nullable="false" />
+          <Property Name="AgencyId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DisplayDate">
+          <Key>
+            <PropertyRef Name="DateId" />
+          </Key>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="DateId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FilePath" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="FileId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdvertisementId" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AdvAgenciesDB.dbo.Payment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="AccountId" />
+            <PropertyRef Name="Payment" />
+          </Key>
+          <Property Name="AccountId" Type="bigint" Nullable="false" />
+          <Property Name="Payment" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="Account_AdvertisingCampaign">
+          <End Role="AdvertisingCampaign" Type="Self.AdvertisingCampaign" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisingCampaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Account_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Advertisement_Campaign">
+          <End Role="AdvertisingCampaign" Type="Self.AdvertisingCampaign" Multiplicity="1" />
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisingCampaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AdvertisementDisplayDate_Advertisement">
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="1" />
+          <End Role="AdvertisementDisplayDate" Type="Self.AdvertisementDisplayDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertisement">
+              <PropertyRef Name="AdvertisementId" />
+            </Principal>
+            <Dependent Role="AdvertisementDisplayDate">
+              <PropertyRef Name="AdvertisementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AdvertisementDisplayDate_DisplayDate">
+          <End Role="DisplayDate" Type="Self.DisplayDate" Multiplicity="1" />
+          <End Role="AdvertisementDisplayDate" Type="Self.AdvertisementDisplayDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DisplayDate">
+              <PropertyRef Name="DateId" />
+            </Principal>
+            <Dependent Role="AdvertisementDisplayDate">
+              <PropertyRef Name="DateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AdvertisingCampaign_Agency">
+          <End Role="Agency" Type="Self.Agency" Multiplicity="1" />
+          <End Role="AdvertisingCampaign" Type="Self.AdvertisingCampaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agency">
+              <PropertyRef Name="AgencyId" />
+            </Principal>
+            <Dependent Role="AdvertisingCampaign">
+              <PropertyRef Name="AgencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AdvertisingCampaign_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="AdvertisingCampaign" Type="Self.AdvertisingCampaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="AdvertisingCampaign">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Agency_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Agency" Type="Self.Agency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Agency">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContactPerson_Agency">
+          <End Role="Agency" Type="Self.Agency" Multiplicity="1" />
+          <End Role="ContactPerson" Type="Self.ContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agency">
+              <PropertyRef Name="AgencyId" />
+            </Principal>
+            <Dependent Role="ContactPerson">
+              <PropertyRef Name="AgencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Materials_Advertisement">
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="0..1" />
+          <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertisement">
+              <PropertyRef Name="AdvertisementId" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="AdvertisementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Materials_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Payment_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="AdvAgenciesDBModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Advertisement" EntityType="Self.Advertisement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdvertisingCampaign" EntityType="Self.AdvertisingCampaign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agency" EntityType="Self.Agency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisplayDate" EntityType="Self.DisplayDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdvertisementDisplayDate" EntityType="Self.AdvertisementDisplayDate" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AdvertisementDisplayDate].[AdvertisementId] AS [AdvertisementId], 
+    [AdvertisementDisplayDate].[DateId] AS [DateId]
+    FROM [dbo].[AdvertisementDisplayDate] AS [AdvertisementDisplayDate]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ContactPerson" EntityType="Self.ContactPerson" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ContactPerson].[EMail] AS [EMail], 
+    [ContactPerson].[FirstName] AS [FirstName], 
+    [ContactPerson].[LastName] AS [LastName], 
+    [ContactPerson].[PhoneNumber] AS [PhoneNumber], 
+    [ContactPerson].[PersonId] AS [PersonId], 
+    [ContactPerson].[AgencyId] AS [AgencyId]
+    FROM [dbo].[ContactPerson] AS [ContactPerson]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Payment" EntityType="Self.Payment" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Payment].[AccountId] AS [AccountId], 
+    [Payment].[Payment] AS [Payment]
+    FROM [dbo].[Payment] AS [Payment]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Account_AdvertisingCampaign" Association="Self.Account_AdvertisingCampaign">
+            <End Role="AdvertisingCampaign" EntitySet="AdvertisingCampaign" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="Account_Client" Association="Self.Account_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="Advertisement_Campaign" Association="Self.Advertisement_Campaign">
+            <End Role="AdvertisingCampaign" EntitySet="AdvertisingCampaign" />
+            <End Role="Advertisement" EntitySet="Advertisement" />
+          </AssociationSet>
+          <AssociationSet Name="AdvertisementDisplayDate_Advertisement" Association="Self.AdvertisementDisplayDate_Advertisement">
+            <End Role="Advertisement" EntitySet="Advertisement" />
+            <End Role="AdvertisementDisplayDate" EntitySet="AdvertisementDisplayDate" />
+          </AssociationSet>
+          <AssociationSet Name="AdvertisementDisplayDate_DisplayDate" Association="Self.AdvertisementDisplayDate_DisplayDate">
+            <End Role="DisplayDate" EntitySet="DisplayDate" />
+            <End Role="AdvertisementDisplayDate" EntitySet="AdvertisementDisplayDate" />
+          </AssociationSet>
+          <AssociationSet Name="AdvertisingCampaign_Agency" Association="Self.AdvertisingCampaign_Agency">
+            <End Role="Agency" EntitySet="Agency" />
+            <End Role="AdvertisingCampaign" EntitySet="AdvertisingCampaign" />
+          </AssociationSet>
+          <AssociationSet Name="AdvertisingCampaign_Client" Association="Self.AdvertisingCampaign_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="AdvertisingCampaign" EntitySet="AdvertisingCampaign" />
+          </AssociationSet>
+          <AssociationSet Name="Agency_City" Association="Self.Agency_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Agency" EntitySet="Agency" />
+          </AssociationSet>
+          <AssociationSet Name="ContactPerson_Agency" Association="Self.ContactPerson_Agency">
+            <End Role="Agency" EntitySet="Agency" />
+            <End Role="ContactPerson" EntitySet="ContactPerson" />
+          </AssociationSet>
+          <AssociationSet Name="Materials_Advertisement" Association="Self.Materials_Advertisement">
+            <End Role="Advertisement" EntitySet="Advertisement" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="Materials_Type" Association="Self.Materials_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="Payment_Account" Association="Self.Payment_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdvAgenciesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int64" Nullable="false" />
+          <Property Name="CampaignId" Type="Int64" Nullable="false" />
+          <Property Name="Account1" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="AdvertisingCampaign" Relationship="Self.Account_AdvertisingCampaign" FromRole="Account" ToRole="AdvertisingCampaign" />
+          <NavigationProperty Name="Client" Relationship="Self.Account_Client" FromRole="Account" ToRole="Client" />
+          <NavigationProperty Name="Payments" Relationship="Self.Payment_Account" FromRole="Account" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="AdvertisementId" />
+          </Key>
+          <Property Name="Frequency" Type="Int32" Nullable="false" />
+          <Property Name="AdvertisementId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CampaignId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="AdvertisingCampaign" Relationship="Self.Advertisement_Campaign" FromRole="Advertisement" ToRole="AdvertisingCampaign" />
+          <NavigationProperty Name="Materials" Relationship="Self.Materials_Advertisement" FromRole="Advertisement" ToRole="Materials" />
+          <NavigationProperty Name="DisplayDates" Relationship="Self.AdvertisementDisplayDate" FromRole="Advertisement" ToRole="DisplayDate" />
+        </EntityType>
+        <EntityType Name="AdvertisingCampaign">
+          <Key>
+            <PropertyRef Name="CampaignId" />
+          </Key>
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CampaignName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Slogan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Characteristic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AgencyId" Type="Int64" Nullable="false" />
+          <Property Name="CampaignId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.Account_AdvertisingCampaign" FromRole="AdvertisingCampaign" ToRole="Account" />
+          <NavigationProperty Name="Advertisements" Relationship="Self.Advertisement_Campaign" FromRole="AdvertisingCampaign" ToRole="Advertisement" />
+          <NavigationProperty Name="Agency" Relationship="Self.AdvertisingCampaign_Agency" FromRole="AdvertisingCampaign" ToRole="Agency" />
+          <NavigationProperty Name="Client" Relationship="Self.AdvertisingCampaign_Client" FromRole="AdvertisingCampaign" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Agency">
+          <Key>
+            <PropertyRef Name="AgencyId" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AgencyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HouseNumber" Type="Int32" Nullable="false" />
+          <Property Name="CityId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="AdvertisingCampaigns" Relationship="Self.AdvertisingCampaign_Agency" FromRole="Agency" ToRole="AdvertisingCampaign" />
+          <NavigationProperty Name="City" Relationship="Self.Agency_City" FromRole="Agency" ToRole="City" />
+          <NavigationProperty Name="ContactPersons" Relationship="Self.ContactPerson_Agency" FromRole="Agency" ToRole="ContactPerson" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Agencies" Relationship="Self.Agency_City" FromRole="City" ToRole="Agency" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.Account_Client" FromRole="Client" ToRole="Account" />
+          <NavigationProperty Name="AdvertisingCampaigns" Relationship="Self.AdvertisingCampaign_Client" FromRole="Client" ToRole="AdvertisingCampaign" />
+        </EntityType>
+        <EntityType Name="DisplayDate">
+          <Key>
+            <PropertyRef Name="DateId" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Advertisements" Relationship="Self.AdvertisementDisplayDate" FromRole="DisplayDate" ToRole="Advertisement" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="FileId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdvertisementId" Type="Int64" />
+          <NavigationProperty Name="Advertisement" Relationship="Self.Materials_Advertisement" FromRole="Materials" ToRole="Advertisement" />
+          <NavigationProperty Name="Type" Relationship="Self.Materials_Type" FromRole="Materials" ToRole="Type" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="Self.Materials_Type" FromRole="Type" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="ContactPerson">
+          <Key>
+            <PropertyRef Name="EMail" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="PersonId" />
+            <PropertyRef Name="AgencyId" />
+          </Key>
+          <Property Name="EMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PersonId" Type="Int64" Nullable="false" />
+          <Property Name="AgencyId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Agency" Relationship="Self.ContactPerson_Agency" FromRole="ContactPerson" ToRole="Agency" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="AccountId" />
+            <PropertyRef Name="Payment1" />
+          </Key>
+          <Property Name="AccountId" Type="Int64" Nullable="false" />
+          <Property Name="Payment1" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.Payment_Account" FromRole="Payment" ToRole="Account" />
+        </EntityType>
+        <Association Name="Account_AdvertisingCampaign">
+          <End Role="AdvertisingCampaign" Type="Self.AdvertisingCampaign" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisingCampaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Account_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Payment_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Advertisement_Campaign">
+          <End Role="AdvertisingCampaign" Type="Self.AdvertisingCampaign" Multiplicity="1" />
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisingCampaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Materials_Advertisement">
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="0..1" />
+          <End Role="Materials" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertisement">
+              <PropertyRef Name="AdvertisementId" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="AdvertisementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AdvertisingCampaign_Agency">
+          <End Role="Agency" Type="Self.Agency" Multiplicity="1" />
+          <End Role="AdvertisingCampaign" Type="Self.AdvertisingCampaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agency">
+              <PropertyRef Name="AgencyId" />
+            </Principal>
+            <Dependent Role="AdvertisingCampaign">
+              <PropertyRef Name="AgencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AdvertisingCampaign_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="AdvertisingCampaign" Type="Self.AdvertisingCampaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="AdvertisingCampaign">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Agency_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Agency" Type="Self.Agency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Agency">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContactPerson_Agency">
+          <End Role="Agency" Type="Self.Agency" Multiplicity="1" />
+          <End Role="ContactPerson" Type="Self.ContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agency">
+              <PropertyRef Name="AgencyId" />
+            </Principal>
+            <Dependent Role="ContactPerson">
+              <PropertyRef Name="AgencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Materials_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Materials" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AdvertisementDisplayDate">
+          <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+          <End Role="DisplayDate" Type="Self.DisplayDate" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AdvAgenciesDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Advertisements" EntityType="Self.Advertisement" />
+          <EntitySet Name="AdvertisingCampaigns" EntityType="Self.AdvertisingCampaign" />
+          <EntitySet Name="Agencies" EntityType="Self.Agency" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="DisplayDates" EntityType="Self.DisplayDate" />
+          <EntitySet Name="Materials" EntityType="Self.Material" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Types" EntityType="Self.Type" />
+          <EntitySet Name="ContactPersons" EntityType="Self.ContactPerson" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <AssociationSet Name="Account_AdvertisingCampaign" Association="Self.Account_AdvertisingCampaign">
+            <End Role="AdvertisingCampaign" EntitySet="AdvertisingCampaigns" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="Account_Client" Association="Self.Account_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="Payment_Account" Association="Self.Payment_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="Advertisement_Campaign" Association="Self.Advertisement_Campaign">
+            <End Role="AdvertisingCampaign" EntitySet="AdvertisingCampaigns" />
+            <End Role="Advertisement" EntitySet="Advertisements" />
+          </AssociationSet>
+          <AssociationSet Name="Materials_Advertisement" Association="Self.Materials_Advertisement">
+            <End Role="Advertisement" EntitySet="Advertisements" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="AdvertisingCampaign_Agency" Association="Self.AdvertisingCampaign_Agency">
+            <End Role="Agency" EntitySet="Agencies" />
+            <End Role="AdvertisingCampaign" EntitySet="AdvertisingCampaigns" />
+          </AssociationSet>
+          <AssociationSet Name="AdvertisingCampaign_Client" Association="Self.AdvertisingCampaign_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="AdvertisingCampaign" EntitySet="AdvertisingCampaigns" />
+          </AssociationSet>
+          <AssociationSet Name="Agency_City" Association="Self.Agency_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Agency" EntitySet="Agencies" />
+          </AssociationSet>
+          <AssociationSet Name="ContactPerson_Agency" Association="Self.ContactPerson_Agency">
+            <End Role="Agency" EntitySet="Agencies" />
+            <End Role="ContactPerson" EntitySet="ContactPersons" />
+          </AssociationSet>
+          <AssociationSet Name="Materials_Type" Association="Self.Materials_Type">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="AdvertisementDisplayDate" Association="Self.AdvertisementDisplayDate">
+            <End Role="Advertisement" EntitySet="Advertisements" />
+            <End Role="DisplayDate" EntitySet="DisplayDates" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AdvAgenciesDBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AdvAgenciesDBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdvAgenciesDBModelStoreContainer" CdmEntityContainer="AdvAgenciesDBEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+                <ScalarProperty Name="Account1" ColumnName="Account" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Advertisements">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.Advertisement">
+              <MappingFragment StoreEntitySet="Advertisement">
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="AdvertisementId" ColumnName="AdvertisementId" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdvertisingCampaigns">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.AdvertisingCampaign">
+              <MappingFragment StoreEntitySet="AdvertisingCampaign">
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+                <ScalarProperty Name="Slogan" ColumnName="Slogan" />
+                <ScalarProperty Name="Characteristic" ColumnName="Characteristic" />
+                <ScalarProperty Name="AgencyId" ColumnName="AgencyId" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agencies">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.Agency">
+              <MappingFragment StoreEntitySet="Agency">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AgencyId" ColumnName="AgencyId" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisplayDates">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.DisplayDate">
+              <MappingFragment StoreEntitySet="DisplayDate">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateId" ColumnName="DateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.Material">
+              <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="AdvertisementId" ColumnName="AdvertisementId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactPersons">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.ContactPerson">
+              <MappingFragment StoreEntitySet="ContactPerson">
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="AgencyId" ColumnName="AgencyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="AdvAgenciesDBModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Payment1" ColumnName="Payment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AdvertisementDisplayDate" TypeName="AdvAgenciesDBModel.AdvertisementDisplayDate" StoreEntitySet="AdvertisementDisplayDate">
+            <EndProperty Name="Advertisement">
+              <ScalarProperty Name="AdvertisementId" ColumnName="AdvertisementId" />
+            </EndProperty>
+            <EndProperty Name="DisplayDate">
+              <ScalarProperty Name="DateId" ColumnName="DateId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="AdvAgenciesDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="AdvAgenciesDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="AdvAgenciesDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="AdvAgenciesDBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdvAgenciesDBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="AdvAgenciesDBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdvAgenciesDBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="AdvAgenciesDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="AdvAgenciesDBModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

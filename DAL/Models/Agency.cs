@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAL.Models
+﻿namespace DAL.Models
 {
-    public class ModelAgency
+    public class AgencyModel
     {
         public string Name { get; set; }
         public string City { get; set; }

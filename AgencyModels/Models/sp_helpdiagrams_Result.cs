@@ -10,17 +10,13 @@
 namespace AgencyModels.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ContactPerson
+    public partial class sp_helpdiagrams_Result
     {
-        public string EMail { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
-        public long PersonId { get; set; }
-        public long AgencyId { get; set; }
-    
-        public virtual Agency Agency { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

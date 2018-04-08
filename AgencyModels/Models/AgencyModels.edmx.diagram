@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="117d24d7f2c345969bc5f6d3d21d4da4" Name="Diagram1">
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.Account" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.Advertisement" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.AdvertisingCampaign" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.Agency" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.City" Width="1.5" PointX="1.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.Client" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.DisplayDate" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.Material" Width="1.5" PointX="10.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.Type" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.ContactPerson" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvAgenciesDBModel.Payment" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="AdvAgenciesDBModel.Account_AdvertisingCampaign" ManuallyRouted="false" />
+        <AssociationConnector Association="AdvAgenciesDBModel.Account_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="AdvAgenciesDBModel.Payment_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="AdvAgenciesDBModel.Advertisement_Campaign" ManuallyRouted="false" />
+        <AssociationConnector Association="AdvAgenciesDBModel.Materials_Advertisement" ManuallyRouted="false" />
+        <AssociationConnector Association="AdvAgenciesDBModel.AdvertisingCampaign_Agency" ManuallyRouted="false" />
+        <AssociationConnector Association="AdvAgenciesDBModel.AdvertisingCampaign_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="AdvAgenciesDBModel.Agency_City" ManuallyRouted="false" />
+        <AssociationConnector Association="AdvAgenciesDBModel.ContactPerson_Agency" ManuallyRouted="false" />
+        <AssociationConnector Association="AdvAgenciesDBModel.Materials_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="AdvAgenciesDBModel.AdvertisementDisplayDate" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

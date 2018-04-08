@@ -1,31 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AgencyModels.Models;
+﻿using System.Linq;
 using DAL.Models;
+using DBModels = AgencyModels.Models.AdvAgenciesDBEntities;
 
 namespace DAL.Repositories
 {
     public class AgencyRepository
     {
-        private AgencyModel agencyModels;
+        private DBModels agencyModels;
 
         #region Constructors 
         public AgencyRepository()
         {
-            this.agencyModels = new AgencyModel();
+            this.agencyModels = new DBModels();
         }
         #endregion
 
         #region Execude methods for agency
-        public IQueryable<ModelAgency> ExecudeAgencies()
+        public IQueryable<AgencyModel> ExecuteAgencies()
         {
             return (from agency in agencyModels.Agencies
                     join city in agencyModels.Cities
                     on agency.CityId equals city.CityId
-                    select new ModelAgency
+                    select new AgencyModel
                     {
                         Name = agency.Name,
                         City = city.CityName,
@@ -33,9 +29,9 @@ namespace DAL.Repositories
                     });
         }        
 
-        public IQueryable<ModelAgency> ExecudeAgenciesInCity(string city)
+        public IQueryable<AgencyModel> ExecuteAgenciesInCity(string city)
         {
-            var result = ExecudeAgencies();
+            var result = ExecuteAgencies();
             return result.Where(x => x.City == city);
                     
         }
