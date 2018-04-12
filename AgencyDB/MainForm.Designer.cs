@@ -28,50 +28,115 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Execude = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.DataViewer = new System.Windows.Forms.DataGridView();
+            this.ExecuteCampaignTotalCost = new System.Windows.Forms.Button();
+            this.DebtorClientsExecute = new System.Windows.Forms.Button();
+            this.ExecutePaidAccount = new System.Windows.Forms.Button();
+            this.ExecuteCampaign = new System.Windows.Forms.Button();
+            this.ExecuteClients = new System.Windows.Forms.Button();
+            this.ExecuteAgencies = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.DataViewer)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DataViewer
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 13);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(657, 425);
-            this.dataGridView1.TabIndex = 0;
+            this.DataViewer.AllowUserToAddRows = false;
+            this.DataViewer.AllowUserToDeleteRows = false;
+            this.DataViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataViewer.Location = new System.Drawing.Point(13, 13);
+            this.DataViewer.Name = "DataViewer";
+            this.DataViewer.ReadOnly = true;
+            this.DataViewer.Size = new System.Drawing.Size(657, 425);
+            this.DataViewer.TabIndex = 0;
             // 
-            // Execude
+            // ExecuteCampaignTotalCost
             // 
-            this.Execude.Location = new System.Drawing.Point(676, 414);
-            this.Execude.Name = "Execude";
-            this.Execude.Size = new System.Drawing.Size(89, 24);
-            this.Execude.TabIndex = 1;
-            this.Execude.Text = "Execude";
-            this.Execude.UseVisualStyleBackColor = true;
-            this.Execude.Click += new System.EventHandler(this.Execude_Click);
+            this.ExecuteCampaignTotalCost.Location = new System.Drawing.Point(676, 414);
+            this.ExecuteCampaignTotalCost.Name = "ExecuteCampaignTotalCost";
+            this.ExecuteCampaignTotalCost.Size = new System.Drawing.Size(129, 24);
+            this.ExecuteCampaignTotalCost.TabIndex = 1;
+            this.ExecuteCampaignTotalCost.Text = "Campaign Total Cost";
+            this.ExecuteCampaignTotalCost.UseVisualStyleBackColor = true;
+            this.ExecuteCampaignTotalCost.Click += new System.EventHandler(this.ExecuteCampaignTotalCost_Click);
+            // 
+            // DebtorClientsExecute
+            // 
+            this.DebtorClientsExecute.Location = new System.Drawing.Point(677, 385);
+            this.DebtorClientsExecute.Name = "DebtorClientsExecute";
+            this.DebtorClientsExecute.Size = new System.Drawing.Size(128, 23);
+            this.DebtorClientsExecute.TabIndex = 2;
+            this.DebtorClientsExecute.Text = "Debtor Clients";
+            this.DebtorClientsExecute.UseVisualStyleBackColor = true;
+            this.DebtorClientsExecute.Click += new System.EventHandler(this.DebtorClientsExecute_Click);
+            // 
+            // ExecutePaidAccount
+            // 
+            this.ExecutePaidAccount.Location = new System.Drawing.Point(677, 356);
+            this.ExecutePaidAccount.Name = "ExecutePaidAccount";
+            this.ExecutePaidAccount.Size = new System.Drawing.Size(128, 23);
+            this.ExecutePaidAccount.TabIndex = 3;
+            this.ExecutePaidAccount.Text = "Paid Account";
+            this.ExecutePaidAccount.UseVisualStyleBackColor = true;
+            this.ExecutePaidAccount.Click += new System.EventHandler(this.ExecutePaidAccount_Click);
+            // 
+            // ExecuteCampaign
+            // 
+            this.ExecuteCampaign.Location = new System.Drawing.Point(677, 327);
+            this.ExecuteCampaign.Name = "ExecuteCampaign";
+            this.ExecuteCampaign.Size = new System.Drawing.Size(128, 23);
+            this.ExecuteCampaign.TabIndex = 4;
+            this.ExecuteCampaign.Text = "Campaign";
+            this.ExecuteCampaign.UseVisualStyleBackColor = true;
+            this.ExecuteCampaign.Click += new System.EventHandler(this.ExecuteCampaign_Click);
+            // 
+            // ExecuteClients
+            // 
+            this.ExecuteClients.Location = new System.Drawing.Point(677, 298);
+            this.ExecuteClients.Name = "ExecuteClients";
+            this.ExecuteClients.Size = new System.Drawing.Size(128, 23);
+            this.ExecuteClients.TabIndex = 5;
+            this.ExecuteClients.Text = "Clients";
+            this.ExecuteClients.UseVisualStyleBackColor = true;
+            this.ExecuteClients.Click += new System.EventHandler(this.ExecuteClients_Click);
+            // 
+            // ExecuteAgencies
+            // 
+            this.ExecuteAgencies.Location = new System.Drawing.Point(677, 269);
+            this.ExecuteAgencies.Name = "ExecuteAgencies";
+            this.ExecuteAgencies.Size = new System.Drawing.Size(128, 23);
+            this.ExecuteAgencies.TabIndex = 6;
+            this.ExecuteAgencies.Text = "Agencies";
+            this.ExecuteAgencies.UseVisualStyleBackColor = true;
+            this.ExecuteAgencies.Click += new System.EventHandler(this.ExecuteAgencies_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Execude);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(817, 450);
+            this.Controls.Add(this.ExecuteAgencies);
+            this.Controls.Add(this.ExecuteClients);
+            this.Controls.Add(this.ExecuteCampaign);
+            this.Controls.Add(this.ExecutePaidAccount);
+            this.Controls.Add(this.DebtorClientsExecute);
+            this.Controls.Add(this.ExecuteCampaignTotalCost);
+            this.Controls.Add(this.DataViewer);
             this.Name = "MainForm";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataViewer)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button Execude;
+        private System.Windows.Forms.DataGridView DataViewer;
+        private System.Windows.Forms.Button ExecuteCampaignTotalCost;
+        private System.Windows.Forms.Button DebtorClientsExecute;
+        private System.Windows.Forms.Button ExecutePaidAccount;
+        private System.Windows.Forms.Button ExecuteCampaign;
+        private System.Windows.Forms.Button ExecuteClients;
+        private System.Windows.Forms.Button ExecuteAgencies;
     }
 }
 

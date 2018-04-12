@@ -26,7 +26,7 @@ namespace DAL.Repositories
                     });
         }
 
-        public IQueryable <ClientModel> ExecuteClientsForAgency(string agencyName)
+        public IQueryable<ClientModel> ExecuteClientsForAgency(string agencyName)
         {
             return (from client in dbModels.Clients
                     join campaign in dbModels.AdvertisingCampaigns
@@ -50,7 +50,6 @@ namespace DAL.Repositories
                 );
         }
 
-
         public IQueryable<ClientModel> ExecuteClientsByNameAndAgency(string lastName, string agencyName)
         {
             return this.ExecuteClientsForAgency(agencyName).
@@ -59,7 +58,38 @@ namespace DAL.Repositories
                     client => client.LastName.Contains(lastName)
                 );
         }
-        #endregion
 
+        public IQueryable<ClientModel> ExecuteDebtorClients()
+        {
+            return (from account in dbModels.Accounts
+                    join client in dbModels.Clients
+                    on account.ClientId equals client.ClientId
+                    join campaign in dbModels.AdvertisingCampaigns
+                    on account.CampaignId equals campaign.CampaignId
+                    join payment in dbModels.Payments
+                    on account.AccountId equals payment.AccountId
+                    select new
+                    {
+                        client.FirstName,
+                        client.LastName,
+                        Account = account.Account1,
+                        Payment = payment.Payment1
+                    }
+                    into x
+                    group x by new
+                    {
+                        x.FirstName,
+                        x.LastName,
+                        x.Account
+                    }
+                    into result
+                    where result.Key.Account > result.Sum(i => i.Payment)
+                    select new ClientModel
+                    {
+                        FirstName = result.Key.FirstName,
+                        LastName = result.Key.LastName
+                    });
+        }
+        #endregion
     }
 }

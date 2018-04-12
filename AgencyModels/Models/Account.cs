@@ -23,7 +23,7 @@ namespace AgencyModels.Models
         public long AccountId { get; set; }
         public long ClientId { get; set; }
         public long CampaignId { get; set; }
-        public Nullable<decimal> Account1 { get; set; }
+        public decimal Account1 { get; set; }
     
         public virtual AdvertisingCampaign AdvertisingCampaign { get; set; }
         public virtual Client Client { get; set; }

@@ -10,19 +10,46 @@ namespace AgencyDB
     {
         private AgencyRepository agency;
         private ClientRepository client;
-
+        private AccountRepository account;
+        private CampaignRepository campaign;
         public MainForm()
         {
             InitializeComponent();
             agency = new AgencyRepository();
             client = new ClientRepository();
+            account = new AccountRepository();
+            campaign = new CampaignRepository();
         }
 
-        private void Execude_Click(object sender, EventArgs e)
+        private void ExecuteCampaignTotalCost_Click(object sender, EventArgs e)
         {
-            var agencyResult = agency.ExecuteAgenciesInCity("Lviv").ToList();
-            var clientAgencyNameResult = client.ExecuteClientsByNameAndAgency("Shos", "Lviv");
-            var clientLastNameResult = client.ExecuteClientsByName("Shos");
+            DataViewer.DataSource = campaign.GetCampaignModelsWithCost().ToList();
+        }
+
+        private void DebtorClientsExecute_Click(object sender, EventArgs e)
+        {
+            DataViewer.DataSource = client.ExecuteDebtorClients().ToList();
+        }
+
+        private void ExecutePaidAccount_Click(object sender, EventArgs e)
+        {
+            DataViewer.DataSource = account.GetPaidAccounts().ToList();
+        }
+
+        private void ExecuteCampaign_Click(object sender, EventArgs e)
+        {
+            DataViewer.DataSource = campaign.GetCampaignModels().ToList();
+            DataViewer.Columns["TotalCost"].Visible = false;
+        }
+
+        private void ExecuteClients_Click(object sender, EventArgs e)
+        {
+            DataViewer.DataSource = client.ExecuteClients().ToList();
+        }
+
+        private void ExecuteAgencies_Click(object sender, EventArgs e)
+        {
+            DataViewer.DataSource = agency.ExecuteAgencies().ToList();
         }
     }
 }
