@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using DAL.Models;
-using DBModels = AgencyModels.Models.AdvAgenciesDBEntities;
+using AgencyModels.Models;
+using DBModels = AgencyModels.EntityModels.AdvAgenciesDBEntities;
 
 namespace DAL.Repositories
 {
@@ -15,8 +15,8 @@ namespace DAL.Repositories
         }
         #endregion
 
-        #region Execude methods for client
-        public IQueryable<ClientModel> ExecuteClients()
+        #region public methods for client
+        public IQueryable<ClientModel> GetClients()
         {
             return (from client in dbModels.Clients
                     select new ClientModel
@@ -26,7 +26,7 @@ namespace DAL.Repositories
                     });
         }
 
-        public IQueryable<ClientModel> ExecuteClientsForAgency(string agencyName)
+        public IQueryable<ClientModel> GetClientsForAgency(string agencyName)
         {
             return (from client in dbModels.Clients
                     join campaign in dbModels.AdvertisingCampaigns
@@ -41,25 +41,26 @@ namespace DAL.Repositories
                     });
         }
 
-        public IQueryable<ClientModel> ExecuteClientsByName(string lastName)
+        public IQueryable<ClientModel> GetClientsByName(string name)
         {
-            return this.ExecuteClients().
+            return this.GetClients().
+                Where
+                (
+                    client => client.LastName.Contains(name) ||
+                              client.FirstName.Contains(name)
+                );
+        }
+
+        public IQueryable<ClientModel> GetClientsByNameAndAgency(string lastName, string agencyName)
+        {
+            return this.GetClientsForAgency(agencyName).
                 Where
                 (
                     client => client.LastName.Contains(lastName)
                 );
         }
 
-        public IQueryable<ClientModel> ExecuteClientsByNameAndAgency(string lastName, string agencyName)
-        {
-            return this.ExecuteClientsForAgency(agencyName).
-                Where
-                (
-                    client => client.LastName.Contains(lastName)
-                );
-        }
-
-        public IQueryable<ClientModel> ExecuteDebtorClients()
+        public IQueryable<ClientModel> GetDebtorClients()
         {
             return (from account in dbModels.Accounts
                     join client in dbModels.Clients

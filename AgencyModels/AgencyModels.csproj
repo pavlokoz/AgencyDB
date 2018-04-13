@@ -49,72 +49,76 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Account.cs">
+    <Compile Include="AgencyModels\Account.cs" />
+    <Compile Include="AgencyModels\Agency.cs" />
+    <Compile Include="AgencyModels\Campaign.cs" />
+    <Compile Include="AgencyModels\Client.cs" />
+    <Compile Include="EntityModels\Account.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Advertisement.cs">
+    <Compile Include="EntityModels\Advertisement.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AdvertisingCampaign.cs">
+    <Compile Include="EntityModels\AdvertisingCampaign.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Agency.cs">
+    <Compile Include="EntityModels\Agency.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AgencyModels.Context.cs">
+    <Compile Include="EntityModels\AgencyModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AgencyModels.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AgencyModels.cs">
+    <Compile Include="EntityModels\AgencyModels.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AgencyModels.Designer.cs">
+    <Compile Include="EntityModels\AgencyModels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AgencyModels.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\City.cs">
+    <Compile Include="EntityModels\City.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Client.cs">
+    <Compile Include="EntityModels\Client.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ContactPerson.cs">
+    <Compile Include="EntityModels\ContactPerson.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DisplayDate.cs">
+    <Compile Include="EntityModels\DisplayDate.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Material.cs">
+    <Compile Include="EntityModels\Material.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Payment.cs">
+    <Compile Include="EntityModels\Payment.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+    <Compile Include="EntityModels\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+    <Compile Include="EntityModels\sp_helpdiagrams_Result.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
+    <Compile Include="EntityModels\sysdiagram.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Type.cs">
+    <Compile Include="EntityModels\Type.cs">
       <DependentUpon>AgencyModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Models\AgencyModels.edmx">
+    <EntityDeploy Include="EntityModels\AgencyModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AgencyModels.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\AgencyModels.edmx.diagram">
+    <None Include="EntityModels\AgencyModels.edmx.diagram">
       <DependentUpon>AgencyModels.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -123,12 +127,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\AgencyModels.Context.tt">
+    <Content Include="EntityModels\AgencyModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AgencyModels.edmx</DependentUpon>
       <LastGenOutput>AgencyModels.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AgencyModels.tt">
+    <Content Include="EntityModels\AgencyModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AgencyModels.edmx</DependentUpon>
       <LastGenOutput>AgencyModels.cs</LastGenOutput>

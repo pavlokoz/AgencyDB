@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using DAL.Models;
-using DBModels = AgencyModels.Models.AdvAgenciesDBEntities;
+using AgencyModels.Models;
+using DBModels = AgencyModels.EntityModels.AdvAgenciesDBEntities;
 
 namespace DAL.Repositories
 {
@@ -8,13 +8,15 @@ namespace DAL.Repositories
     {
         private DBModels agencyModels;
 
+        #region Constructors
         public CampaignRepository()
         {
             agencyModels = new DBModels();
         }
+        #endregion
 
-        #region 
-        public IQueryable<CampaignModel> GetCampaignModels()
+        #region public methods for campaings
+        public IQueryable<CampaignModel> GetCampaigns()
         {
             return (from campaign in agencyModels.AdvertisingCampaigns
                     join agency in agencyModels.Agencies
@@ -30,17 +32,17 @@ namespace DAL.Repositories
                     });
         }
 
-        public IQueryable<CampaignModel> GetCampaignModelsByName(string campaignName)
+        public IQueryable<CampaignModel> GetCampaignsByName(string campaignName)
         {
-            return this.GetCampaignModels().Where(x => x.CampaignName.ToLower().Contains(campaignName.ToLower()));
+            return this.GetCampaigns().Where(x => x.CampaignName.ToLower().Contains(campaignName.ToLower()));
         }
 
-        public IQueryable<CampaignModel> GetCampaignModelsByAgencyName(string agencyName)
+        public IQueryable<CampaignModel> GetCampaignsByAgencyName(string agencyName)
         {
-            return this.GetCampaignModels().Where(x => x.AgencyName.ToLower().Contains(agencyName.ToLower()));
+            return this.GetCampaigns().Where(x => x.AgencyName.ToLower().Contains(agencyName.ToLower()));
         }
 
-        public IQueryable<CampaignModel>  GetCampaignModelsWithCost()
+        public IQueryable<CampaignModel>  GetCampaignsWithCost()
         {
             return (from campaign in agencyModels.AdvertisingCampaigns
                     join agency in agencyModels.Agencies

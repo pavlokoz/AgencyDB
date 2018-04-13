@@ -1,4 +1,4 @@
-﻿namespace DAL.Models
+﻿namespace AgencyModels.Models
 {
     using System;
 

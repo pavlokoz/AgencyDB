@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace DAL.Models
+﻿namespace AgencyModels.Models
 {
+    using System;
+
     public class AccountModel
     {
         public string CampaignName { get; set; }

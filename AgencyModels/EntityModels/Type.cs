@@ -7,27 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AgencyModels.Models
+namespace AgencyModels.EntityModels
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Client
+    public partial class Type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client()
+        public Type()
         {
-            this.Accounts = new HashSet<Account>();
-            this.AdvertisingCampaigns = new HashSet<AdvertisingCampaign>();
+            this.Materials = new HashSet<Material>();
         }
     
-        public long ClientId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public int TypeId { get; set; }
+        public string FileType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Account> Accounts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AdvertisingCampaign> AdvertisingCampaigns { get; set; }
+        public virtual ICollection<Material> Materials { get; set; }
     }
 }

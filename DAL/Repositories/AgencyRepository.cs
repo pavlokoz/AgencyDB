@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using DAL.Models;
-using DBModels = AgencyModels.Models.AdvAgenciesDBEntities;
+using AgencyModels.Models;
+using DBModels = AgencyModels.EntityModels.AdvAgenciesDBEntities;
 
 namespace DAL.Repositories
 {
@@ -15,8 +15,8 @@ namespace DAL.Repositories
         }
         #endregion
 
-        #region Execude methods for agency
-        public IQueryable<AgencyModel> ExecuteAgencies()
+        #region public methods for agency
+        public IQueryable<AgencyModel> GetAgencies()
         {
             return (from agency in agencyModels.Agencies
                     join city in agencyModels.Cities
@@ -29,11 +29,17 @@ namespace DAL.Repositories
                     });
         }        
 
-        public IQueryable<AgencyModel> ExecuteAgenciesInCity(string city)
+        public IQueryable<AgencyModel> GetAgenciesInCity(string city)
         {
-            var result = ExecuteAgencies();
+            var result = GetAgencies();
             return result.Where(x => x.City == city);
                     
+        }
+
+        public IQueryable<AgencyModel> GetAgenciesByName(string name)
+        {
+            var result = GetAgencies();
+            return result.Where(x => x.Name.Contains(name));
         }
         #endregion
     }

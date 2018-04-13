@@ -7,19 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AgencyModels.Models
+namespace AgencyModels.EntityModels
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Material
+    public partial class ContactPerson
     {
-        public string FilePath { get; set; }
-        public int TypeId { get; set; }
-        public long FileId { get; set; }
-        public Nullable<long> AdvertisementId { get; set; }
+        public string EMail { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public long PersonId { get; set; }
+        public long AgencyId { get; set; }
     
-        public virtual Advertisement Advertisement { get; set; }
-        public virtual Type Type { get; set; }
+        public virtual Agency Agency { get; set; }
     }
 }

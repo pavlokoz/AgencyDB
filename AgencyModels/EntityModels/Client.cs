@@ -7,30 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AgencyModels.Models
+namespace AgencyModels.EntityModels
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Agency
+    public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Agency()
+        public Client()
         {
+            this.Accounts = new HashSet<Account>();
             this.AdvertisingCampaigns = new HashSet<AdvertisingCampaign>();
-            this.ContactPersons = new HashSet<ContactPerson>();
         }
     
-        public string Name { get; set; }
-        public long AgencyId { get; set; }
-        public string Street { get; set; }
-        public int HouseNumber { get; set; }
-        public long CityId { get; set; }
+        public long ClientId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AdvertisingCampaign> AdvertisingCampaigns { get; set; }
-        public virtual City City { get; set; }
+        public virtual ICollection<Account> Accounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContactPerson> ContactPersons { get; set; }
+        public virtual ICollection<AdvertisingCampaign> AdvertisingCampaigns { get; set; }
     }
 }

@@ -7,23 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AgencyModels.Models
+namespace AgencyModels.EntityModels
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class City
+    public partial class DisplayDate
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public City()
+        public DisplayDate()
         {
-            this.Agencies = new HashSet<Agency>();
+            this.Advertisements = new HashSet<Advertisement>();
         }
     
-        public long CityId { get; set; }
-        public string CityName { get; set; }
+        public System.DateTime Date { get; set; }
+        public long DateId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Agency> Agencies { get; set; }
+        public virtual ICollection<Advertisement> Advertisements { get; set; }
     }
 }

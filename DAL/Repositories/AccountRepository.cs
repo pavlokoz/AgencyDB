@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using DAL.Models;
-using DBModels = AgencyModels.Models.AdvAgenciesDBEntities;
+using AgencyModels.Models;
+using DBModels = AgencyModels.EntityModels.AdvAgenciesDBEntities;
 
 namespace DAL.Repositories
 {
@@ -15,7 +15,7 @@ namespace DAL.Repositories
         }
         #endregion
 
-        #region public methods
+        #region public methods for account
         public IQueryable<AccountModel> GetPaidAccounts()
         {
             return (from account in dbModels.Accounts

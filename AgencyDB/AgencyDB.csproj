@@ -87,6 +87,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ADONetDAL\ADONetDAL.csproj">
+      <Project>{a7572aa4-a9ab-4bf6-8b8d-cfdc49f7c62e}</Project>
+      <Name>ADONetDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AgencyModels\AgencyModels.csproj">
       <Project>{5a3e7bdc-3aca-487d-8f96-a6e233bc3051}</Project>
       <Name>AgencyModels</Name>

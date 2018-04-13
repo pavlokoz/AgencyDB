@@ -35,6 +35,9 @@
             this.ExecuteCampaign = new System.Windows.Forms.Button();
             this.ExecuteClients = new System.Windows.Forms.Button();
             this.ExecuteAgencies = new System.Windows.Forms.Button();
+            this.AgencyFilter = new System.Windows.Forms.TextBox();
+            this.ClientFilter = new System.Windows.Forms.TextBox();
+            this.CampaignFilter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataViewer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,6 +49,7 @@
             this.DataViewer.Location = new System.Drawing.Point(13, 13);
             this.DataViewer.Name = "DataViewer";
             this.DataViewer.ReadOnly = true;
+            this.DataViewer.RowHeadersVisible = false;
             this.DataViewer.Size = new System.Drawing.Size(657, 425);
             this.DataViewer.TabIndex = 0;
             // 
@@ -109,11 +113,38 @@
             this.ExecuteAgencies.UseVisualStyleBackColor = true;
             this.ExecuteAgencies.Click += new System.EventHandler(this.ExecuteAgencies_Click);
             // 
+            // AgencyFilter
+            // 
+            this.AgencyFilter.Location = new System.Drawing.Point(677, 243);
+            this.AgencyFilter.Name = "AgencyFilter";
+            this.AgencyFilter.Size = new System.Drawing.Size(128, 20);
+            this.AgencyFilter.TabIndex = 7;
+            this.AgencyFilter.Leave += new System.EventHandler(this.AgencyFilter_Leave);
+            // 
+            // ClientFilter
+            // 
+            this.ClientFilter.Location = new System.Drawing.Point(677, 243);
+            this.ClientFilter.Name = "ClientFilter";
+            this.ClientFilter.Size = new System.Drawing.Size(128, 20);
+            this.ClientFilter.TabIndex = 8;
+            this.ClientFilter.Leave += new System.EventHandler(this.ClientFilter_Leave);
+            // 
+            // CampaignFilter
+            // 
+            this.CampaignFilter.Location = new System.Drawing.Point(676, 243);
+            this.CampaignFilter.Name = "CampaignFilter";
+            this.CampaignFilter.Size = new System.Drawing.Size(129, 20);
+            this.CampaignFilter.TabIndex = 9;
+            this.CampaignFilter.Leave += new System.EventHandler(this.CampaignFilter_Leave);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 450);
+            this.Controls.Add(this.CampaignFilter);
+            this.Controls.Add(this.ClientFilter);
+            this.Controls.Add(this.AgencyFilter);
             this.Controls.Add(this.ExecuteAgencies);
             this.Controls.Add(this.ExecuteClients);
             this.Controls.Add(this.ExecuteCampaign);
@@ -125,6 +156,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.DataViewer)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -137,6 +169,9 @@
         private System.Windows.Forms.Button ExecuteCampaign;
         private System.Windows.Forms.Button ExecuteClients;
         private System.Windows.Forms.Button ExecuteAgencies;
+        private System.Windows.Forms.TextBox AgencyFilter;
+        private System.Windows.Forms.TextBox ClientFilter;
+        private System.Windows.Forms.TextBox CampaignFilter;
     }
 }
 
